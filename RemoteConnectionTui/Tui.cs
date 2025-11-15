@@ -11,6 +11,12 @@ internal sealed class Tui
     public Tui(ServerList serverList)
     {
         _serverList = serverList ?? new ServerList();
+
+        _layout = new Layout().SplitColumns(
+           new Layout("left").Size(30),
+           new Layout("right")
+           );
+
         Draw();
     }
 
@@ -32,11 +38,6 @@ internal sealed class Tui
 
     private void Draw()
     {
-        _layout = new Layout().SplitColumns(
-            new Layout("left").Size(30),
-            new Layout("right")
-            );
-
         _layout["left"].Update(
             new Panel(ServerList(_serverList))
             { Header = new PanelHeader("Servers") }
