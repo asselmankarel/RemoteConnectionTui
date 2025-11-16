@@ -39,4 +39,9 @@ internal sealed class ServerList
         }
     }
 
+    public void AddServer(Server server)
+    {
+        Servers = Servers.Append(server).ToArray();
+    }
+
 }
